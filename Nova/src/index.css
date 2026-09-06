@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap');
+
+@import "tailwindcss";
+
+* {
+  scrollbar-width: none; /* Firefox */
+}
+
+*::-webkit-scrollbar {
+  display: none; /* Chrome, Safari */
+}
+
+@theme{
+    --color-text1:#bbdeec;
+    --color-text2:#a375a9;
+    --font-nova: "Montserrat", sans-serif;
+}
