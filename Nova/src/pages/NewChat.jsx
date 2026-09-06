@@ -111,7 +111,7 @@ const NewChat = () => {
 
           {/* ================= TEXTAREA ================= */}
           <textarea
-            placeholder="Ask anything..."
+            placeholder="Ask Nova"
             className="
               w-full
               min-h-[60px]
@@ -158,7 +158,7 @@ const NewChat = () => {
                   transition
                 "
               >
-                + Add
+                +
               </button>
 
             </div>
