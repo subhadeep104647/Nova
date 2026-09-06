@@ -247,7 +247,7 @@ const Sidebar = () => {
 
           {/* ================= NEW CHAT ================= */}
           <NavLink
-            to="/NewChat"
+            to="/"
             className={linkStyle}
             onClick={() => {
               if (isMobile) {

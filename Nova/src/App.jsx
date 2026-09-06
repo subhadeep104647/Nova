@@ -126,12 +126,7 @@ const App = () => {
         >
 
           <Routes>
-
-            <Route
-              path="/NewChat"
-              element={<NewChat />}
-            />
-
+            <Route path="/" element={<NewChat />}/>
           </Routes>
 
         </main>
