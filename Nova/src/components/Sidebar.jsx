@@ -496,7 +496,7 @@ const Sidebar = () => {
               <div className="text-left">
 
                 <p className="text-sm font-medium">
-                  Sanchari
+                  Subhadeep
                 </p>
 
                 <p className="text-xs text-gray-500">
