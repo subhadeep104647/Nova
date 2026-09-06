@@ -109,26 +109,29 @@ const App = () => {
             duration-300
 
             /* Mobile */
-            ml-16
+            ml-0
             px-4
             py-5
 
             /* Tablet */
-            sm:ml-16
+            sm:ml-0
             sm:px-6
 
             /* Desktop */
-            md:ml-70
+            md:ml-[17.5rem]
             md:px-10
+
             lg:px-10
           "
         >
 
           <Routes>
+
             <Route
               path="/NewChat"
               element={<NewChat />}
             />
+
           </Routes>
 
         </main>
