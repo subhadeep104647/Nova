@@ -92,7 +92,7 @@ const Sidebar = () => {
             duration-300
           "
         >
-          <Logo />
+          <Logo1 />
         </button>
       )}
 
