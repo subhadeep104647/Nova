@@ -2,6 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { IoSparklesOutline, IoArrowUp } from "react-icons/io5";
 import Logo1 from "../icons/Logo1";
+import { FaPlus } from "react-icons/fa6";
 
 const NewChat = () => {
   return (
@@ -142,7 +143,7 @@ const NewChat = () => {
                 className="
                   px-4
                   py-2
-                  rounded-xl
+                  rounded-2xl
 
                   bg-white/[0.04]
 
@@ -158,7 +159,7 @@ const NewChat = () => {
                   transition
                 "
               >
-                +
+                <FaPlus />
               </button>
 
             </div>
