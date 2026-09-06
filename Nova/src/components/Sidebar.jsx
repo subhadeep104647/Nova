@@ -180,7 +180,6 @@ const Sidebar = () => {
             mb-8
             flex
             items-center
-
             ${
               isOpen
                 ? "px-2 justify-between"
@@ -189,14 +188,10 @@ const Sidebar = () => {
           `}
         >
 
-          {/* ================= DESKTOP LOGO ================= */}
+          {/* ================= LOGO ================= */}
           <div
             className="cursor-pointer"
-            onClick={() => {
-              if (!isMobile) {
-                setIsOpen(!isOpen);
-              }
-            }}
+            onClick={() => setIsOpen(!isOpen)}
           >
             {isOpen ? <Logo /> : <Logo1 />}
           </div>
@@ -325,7 +320,7 @@ const Sidebar = () => {
               </div>
             )}
 
-            {/* ================= PINNED CHATS ================= */}
+            {/* PINNED CHATS */}
             {isOpen && (
               <div className="flex flex-col gap-1">
 
@@ -387,7 +382,7 @@ const Sidebar = () => {
               </div>
             )}
 
-            {/* ================= RECENT CHATS ================= */}
+            {/* RECENT CHATS */}
             {isOpen && (
               <div className="flex flex-col gap-1">
 
