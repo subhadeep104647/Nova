@@ -1,0 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@keyframes pulse{
+  0%{
+    background-position: 0% 50%;
+  }
+
+  100%{
+    background-position: 100% 50%;
+  }
+}
+
+@theme{
+    --color-text1:#bbdeec;
+    --color-text2:#a375a9;
+    --color-nav:#DFC0FE;
+    --color-button:#CB9AFC;
+    --font-nova: "Montserrat", sans-serif;
+    --font-heading: "Space Grotesk", sans-serif;
+    --font-body: "Inter", sans-serif;
+}
+
+/* Hide scrollbar for all elements */
+* {
+  scrollbar-width: none; /* Firefox */
+}
+
+*::-webkit-scrollbar {
+  display: none; /* Chrome, Safari */
+}
+
+html, body, #root {
+  height: 100%;
+  background: black;
+}
+
+
