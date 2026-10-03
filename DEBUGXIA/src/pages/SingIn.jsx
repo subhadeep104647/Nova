@@ -10,7 +10,7 @@ const SignIn = ({ setIsAuth }) => {
     setIsAuth(true);
 
     setTimeout(() => {
-      navigate("/Home2");
+      navigate("/NewChat");
     }, 1200);
   };
 

@@ -1,37 +1,51 @@
-import React, { useState } from 'react'
-import { Route, Routes, Navigate, useLocation } from 'react-router-dom'
+import React, { useState } from "react";
+import { Route, Routes, Navigate, useLocation } from "react-router-dom";
+import { motion } from "framer-motion";
 
-import Navbar from './components/Navbar'
-import Navbar2 from './components/Navbar2'
+// Components
+import Navbar from "./components/Navbar";
+import Navbar2 from "./components/Navbar2";
+import Footer from "./components/Footer";
+import Footer2 from "./components/Footer2";
 
-import Home from './pages/Home'
-import Features from './pages/Features'
-import How_It_Works from './pages/How_It_Works'
-import Dashboard from './pages/Dashboard'
-import SingIn from './pages/SingIn'
-import Get_Started from './pages/Get_Started'
-import About from './pages/About'
-import Not_Found from './pages/Not_Found'
-import Footer from './components/Footer'
-import Terms_and_con from './pages/Terms_and_con'
-import Privacy_Policy from './pages/Privacy_Policy'
-import Profile from './pages2.o/Profile'
-import Edit_Profile from './pages2.o/Edit_Profile'
-import NewChat from './pages2.o/NewChat'
-import Footer2 from './components/Footer2'
+// Public Pages
+import Home from "./pages/Home";
+import Features from "./pages/Features";
+import How_It_Works from "./pages/How_It_Works";
+import SingIn from "./pages/SingIn";
+import Get_Started from "./pages/Get_Started";
+import About from "./pages/About";
+import Not_Found from "./pages/Not_Found";
+import Terms_and_con from "./pages/Terms_and_con";
+import Privacy_Policy from "./pages/Privacy_Policy";
 
-import { motion } from 'framer-motion'
+// Private Pages
+import Profile from "./pages2.o/Profile";
+import Edit_Profile from "./pages2.o/Edit_Profile";
+import NewChat from "./pages2.o/NewChat";
 
 
-// Protected Route (only for Home2 now)
+// ===============================
+// PROTECTED ROUTE
+// ===============================
 const ProtectedRoute = ({ isAuth, children }) => {
-  return isAuth ? children : <Navigate to="/SingIn" />;
+  if (!isAuth) {
+    return <Navigate to="/SingIn" replace />;
+  }
+
+  return children;
 };
 
 
-// Public Route
+// ===============================
+// PUBLIC ROUTE
+// ===============================
 const PublicRoute = ({ isAuth, children }) => {
-  return !isAuth ? children : <Navigate to="/NewChat" />;
+  if (isAuth) {
+    return <Navigate to="/NewChat" replace />;
+  }
+
+  return children;
 };
 
 
@@ -40,24 +54,53 @@ const App = () => {
   const [isAuth, setIsAuth] = useState(false);
   const location = useLocation();
 
-  // Navbar2 only for Home2 (after login)
+
+  // ===============================
+  // AFTER LOGIN ROUTES
+  // ===============================
   const afterLoginRoutes = [
+    "/NewChat",
     "/Profile",
     "/Edit_Profile",
-    "/NewChat",
   ];
 
-  const isAfterLoginRoute = afterLoginRoutes.includes(location.pathname);
+
+  // Check whether current page
+  // belongs to logged-in section
+  const isAfterLoginRoute = afterLoginRoutes.includes(
+    location.pathname
+  );
+
+
+  // ===============================
+  // NAVBAR / FOOTER
+  // ===============================
+  const showAfterLoginLayout =
+    isAuth && isAfterLoginRoute;
 
 
   return (
-    <div className='h-screen text-white overflow-x-hidden scroll-smooth min-h-screen overflow-y-auto bg-cover w-[100%] aspect-[16/9] relative'>
+    <div
+      className="
+        min-h-screen
+        w-full
+        text-white
+        overflow-x-hidden
+        scroll-smooth
+        bg-cover
+        relative
+      "
+    >
 
-      {/* Floating Particles */}
+      {/* =========================================
+          FLOATING PARTICLES + SHOOTING STARS
+      ========================================= */}
       <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden">
+
+        {/* Floating Particles */}
         {[...Array(40)].map((_, i) => (
           <motion.div
-            key={i}
+            key={`particle-${i}`}
             animate={{
               y: [0, -100],
               opacity: [0, 1, 0],
@@ -76,92 +119,131 @@ const App = () => {
             }}
           />
         ))}
-        {/* 🌠 Slow Smooth Shooting Stars */}
-{[...Array(3)].map((_, i) => (
-  <motion.div
-    key={`shooting-${i}`}
-    className="absolute"
-    initial={{
-      left: "-12%",
-      top: `${15 + i * 25}%`,
-      opacity: 0,
-    }}
-    animate={{
-      left: "112%",
-      top: `${40 + i * 18}%`,
-      opacity: [0, 0.8, 1, 0.8, 0],
-    }}
-    transition={{
-      duration: Math.random() * 5 + 5,
-      repeat: Infinity,
-      delay: Math.random() * 2,
-      repeatDelay: 3,
-      ease: "easeInOut",
-    }}
-  >
 
-    {/* Long glowing trail */}
-    <div
-      className="
-        absolute
-        w-52
-        h-[2px]
-        rounded-full
-        bg-gradient-to-r
-        from-transparent
-        via-blue-200/30
-        to-white
-        rotate-[25deg]
-        blur-[1px]
-      "
-      style={{
-        boxShadow:
-          "0 0 8px rgba(255,255,255,0.7), 0 0 20px rgba(120,180,255,0.6)",
-      }}
-    />
 
-    {/* Glowing star head */}
-    <div
-      className="
-        absolute
-        -top-[6px]
-        -right-[4px]
-        text-white
-        text-2xl
-      "
-      style={{
-        textShadow:
-          "0 0 5px white, 0 0 12px white, 0 0 25px rgba(120,190,255,0.9)",
-      }}
-    >
-    </div>
+        {/* Shooting Stars */}
+        {[...Array(3)].map((_, i) => (
+          <motion.div
+            key={`shooting-${i}`}
+            className="absolute"
+            initial={{
+              left: "-15%",
+              top: `${-10 + i * 25}%`,
+              opacity: 0,
+            }}
+            animate={{
+              left: "115%",
+              top: `${70 + i * 12}%`,
+              opacity: [0, 0.8, 1, 0.8, 0],
+            }}
+            transition={{
+              duration: Math.random() * 5 + 5,
+              repeat: Infinity,
+              delay: Math.random() * 2,
+              repeatDelay: 3,
+              ease: "easeInOut",
+            }}
+          >
 
-  </motion.div>
-))}
+            {/* Trail */}
+            <div
+              className="
+                absolute
+                w-56
+                h-[2px]
+                rounded-full
+                bg-gradient-to-r
+                from-transparent
+                via-blue-200/30
+                to-white
+                rotate-[25deg]
+                blur-[1px]
+              "
+              style={{
+                boxShadow:
+                  "0 0 8px rgba(255,255,255,0.8), 0 0 20px rgba(120,180,255,0.6)",
+              }}
+            />
+
+            {/* Star */}
+            <div
+              className="
+                absolute
+                -top-[7px]
+                -right-[5px]
+                text-white
+                text-2xl
+                leading-none
+              "
+              style={{
+                textShadow:
+                  "0 0 5px white, 0 0 12px white, 0 0 25px rgba(120,190,255,0.9)",
+              }}
+            >
+            </div>
+
+          </motion.div>
+        ))}
+
       </div>
 
 
-      {/* CONDITIONAL NAVBAR */}
-      {isAuth && isAfterLoginRoute ? (
+      {/* =========================================
+          NAVBAR
+      ========================================= */}
+
+      {showAfterLoginLayout ? (
         <Navbar2 setIsAuth={setIsAuth} />
       ) : (
-        <Navbar isAuth={isAuth} setIsAuth={setIsAuth} />
+        <Navbar
+          isAuth={isAuth}
+          setIsAuth={setIsAuth}
+        />
       )}
 
 
+      {/* =========================================
+          ROUTES
+      ========================================= */}
+
       <Routes>
 
-        {/* PUBLIC (BEFORE LOGIN) */}
-        <Route path='/' element={<Home />} />
-        <Route path='/Features' element={<Features />} />
-        <Route path='/How_It_Works' element={<How_It_Works />} />
-        <Route path='/Get_Started' element={<Get_Started />} />
-        <Route path='/About' element={<About />} />
-        <Route path='/Dashboard' element={<Dashboard />} />
+        {/* =========================
+            PUBLIC ROUTES
+        ========================= */}
 
-        {/* SIGN IN */}
         <Route
-          path='/SingIn'
+          path="/"
+          element={<Home />}
+        />
+
+        <Route
+          path="/Features"
+          element={<Features />}
+        />
+
+        <Route
+          path="/How_It_Works"
+          element={<How_It_Works />}
+        />
+
+        <Route
+          path="/Get_Started"
+          element={<Get_Started />}
+        />
+
+        <Route
+          path="/About"
+          element={<About />}
+        />
+
+
+        {/* =========================
+            SIGN IN
+        ========================= */}
+
+        <Route
+          path="/SingIn"
           element={
             <PublicRoute isAuth={isAuth}>
               <SingIn setIsAuth={setIsAuth} />
@@ -170,19 +252,12 @@ const App = () => {
         />
 
 
-        {/* AFTER LOGIN ONLY */}
+        {/* =========================
+            AFTER LOGIN ROUTES
+        ========================= */}
 
         <Route
-          path='/Profile'
-          element={
-            <ProtectedRoute isAuth={isAuth}>
-              <Profile />
-            </ProtectedRoute>
-          }
-        />
-
-        <Route
-          path='/NewChat'
+          path="/NewChat"
           element={
             <ProtectedRoute isAuth={isAuth}>
               <NewChat />
@@ -191,34 +266,66 @@ const App = () => {
         />
 
         <Route
-          path='/Edit_Profile'
+          path="/Profile"
           element={
             <ProtectedRoute isAuth={isAuth}>
-              <Edit_Profile/>
+              <Profile />
             </ProtectedRoute>
           }
         />
 
-        
-        {/* POLICIES */}
-        <Route path='/Terms_and_con' element={<Terms_and_con />} />
-        <Route path='/Privacy_Policy' element={<Privacy_Policy />} />
+        <Route
+          path="/Edit_Profile"
+          element={
+            <ProtectedRoute isAuth={isAuth}>
+              <Edit_Profile />
+            </ProtectedRoute>
+          }
+        />
 
 
-        {/* NOT FOUND */}
-        <Route path='*' element={<Not_Found />} />
+        {/* =========================
+            POLICIES
+        ========================= */}
+
+        <Route
+          path="/Terms_and_con"
+          element={<Terms_and_con />}
+        />
+
+        <Route
+          path="/Privacy_Policy"
+          element={<Privacy_Policy />}
+        />
+
+
+        {/* =========================
+            404
+        ========================= */}
+
+        <Route
+          path="*"
+          element={<Not_Found />}
+        />
 
       </Routes>
 
 
-      {isAuth && isAfterLoginRoute ? (
+      {/* =========================================
+          FOOTER
+      ========================================= */}
+
+      {showAfterLoginLayout ? (
         <Footer2 setIsAuth={setIsAuth} />
       ) : (
-        <Footer isAuth={isAuth} setIsAuth={setIsAuth} />
+        <Footer
+          isAuth={isAuth}
+          setIsAuth={setIsAuth}
+        />
       )}
 
     </div>
-  )
-}
+  );
+};
 
-export default App
+export default App;

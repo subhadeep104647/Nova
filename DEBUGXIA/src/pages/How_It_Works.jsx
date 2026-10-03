@@ -1,61 +1,602 @@
-import React from 'react'
-import { CodeXml } from 'lucide-react'
-import { TriangleAlert } from 'lucide-react'
-import { Cpu } from 'lucide-react'
-import { CircleCheck } from 'lucide-react'
-import { Minus } from 'lucide-react'
-import Navbar from '../components/Navbar'
+import React from "react";
+import {
+  CodeXml,
+  ShieldAlert,
+  Search,
+  BrainCircuit,
+  FileCheck2,
+} from "lucide-react";
+import { motion } from "framer-motion";
 
 const How_It_Works = () => {
+  const steps = [
+    {
+      icon: CodeXml,
+      title: "Submit Code",
+      description: (
+        <>
+          Developer submits code through
+          <br />
+          the NOVA interface or VS Code.
+        </>
+      ),
+    },
+
+    {
+      icon: ShieldAlert,
+      title: "Detect Vulnerability",
+      description: (
+        <>
+          Semgrep CE scans the code and
+          <br />
+          identifies security vulnerabilities.
+        </>
+      ),
+    },
+
+    {
+      icon: Search,
+      title: "Retrieve Context",
+      description: (
+        <>
+          RAG retrieves relevant security
+          <br />
+          knowledge and vulnerability context.
+        </>
+      ),
+    },
+
+    {
+      icon: BrainCircuit,
+      title: "AI Analysis",
+      description: (
+        <>
+          The LoRA-tuned LLM analyzes the
+          <br />
+          vulnerability and its root cause.
+        </>
+      ),
+    },
+
+    {
+      icon: FileCheck2,
+      title: "Security Report",
+      description: (
+        <>
+          NOVA explains the issue and provides
+          <br />
+          remediation guidance.
+        </>
+      ),
+    },
+  ];
+
   return (
-    
-      <div className=' flex flex-col items-center justify-between gap-20 w-[100%] aspect-[16/9]'>
+    <section className="relative flex flex-col items-center w-full py-24 overflow-hidden">
 
-        <div className='flex flex-col items-center justify-between gap-10 mt-30'>
-          <h1 className='font-bold font-body text-5xl tracking-normal'>From error to <span className='bg-gradient-to-r from-button to-nav bg-clip-text text-transparent'>solution</span> in seconds</h1>
+      {/* =====================================================
+          BACKGROUND GLOW
+      ===================================================== */}
+
+      <div className="absolute inset-0 pointer-events-none">
+
+        <div
+          className="
+            absolute
+            top-[15%]
+            left-1/2
+            -translate-x-1/2
+            w-[700px]
+            h-[300px]
+            rounded-full
+            bg-purple-600/10
+            blur-[120px]
+          "
+        />
+
+      </div>
+
+
+      {/* =====================================================
+          SECTION HEADING
+      ===================================================== */}
+
+      <motion.div
+        initial={{
+          opacity: 0,
+          y: 40,
+        }}
+        whileInView={{
+          opacity: 1,
+          y: 0,
+        }}
+        transition={{
+          duration: 0.8,
+        }}
+        viewport={{
+          once: true,
+          amount: 0.3,
+        }}
+        className="relative z-10 flex flex-col items-center gap-5"
+      >
+
+        <h1
+          className="
+            font-bold
+            font-body
+            text-5xl
+            tracking-normal
+            text-center
+          "
+        >
+          From vulnerable code to{" "}
+          <span
+            className="
+              bg-gradient-to-r
+              from-button
+              via-purple-400
+              to-nav
+              bg-clip-text
+              text-transparent
+            "
+          >
+            secure solution
+          </span>
+        </h1>
+
+
+        <p
+          className="
+            font-medium
+            font-body
+            text-lg
+            text-gray-400
+            text-center
+            max-w-2xl
+          "
+        >
+          NOVA combines static analysis, retrieval-augmented generation,
+          and a tuned language model to understand and explain code
+          security issues.
+        </p>
+
+      </motion.div>
+
+
+      {/* =====================================================
+          WORKFLOW
+      ===================================================== */}
+
+      <div className="relative z-10 mt-20 w-full max-w-[1250px]">
+
+        {/* Connecting line */}
+
+        <div
+          className="
+            absolute
+            top-[42px]
+            left-[10%]
+            right-[10%]
+            h-[2px]
+            bg-gradient-to-r
+            from-transparent
+            via-purple-400/40
+            to-transparent
+          "
+        />
+
+        <div
+          className="
+            absolute
+            top-[39px]
+            left-[10%]
+            right-[10%]
+            h-[7px]
+            bg-purple-500/10
+            blur-md
+          "
+        />
+
+
+        {/* Steps */}
+
+        <div className="relative flex flex-row items-start justify-between">
+
+          {steps.map((step, index) => {
+
+            const Icon = step.icon;
+
+            return (
+              <motion.div
+                key={step.title}
+                initial={{
+                  opacity: 0,
+                  y: 40,
+                }}
+                whileInView={{
+                  opacity: 1,
+                  y: 0,
+                }}
+                transition={{
+                  duration: 0.6,
+                  delay: index * 0.15,
+                }}
+                viewport={{
+                  once: true,
+                  amount: 0.3,
+                }}
+                className="
+                  relative
+                  flex
+                  flex-col
+                  items-center
+                  w-[210px]
+                "
+              >
+
+                {/* ICON */}
+
+                <motion.div
+                  whileHover={{
+                    scale: 1.12,
+                    y: -5,
+                  }}
+                  transition={{
+                    duration: 0.25,
+                  }}
+                  className="
+                    relative
+                    z-20
+                    flex
+                    items-center
+                    justify-center
+
+                    w-[84px]
+                    h-[84px]
+
+                    rounded-2xl
+
+                    bg-[#111018]
+                    backdrop-blur-xl
+
+                    border
+                    border-purple-300/20
+
+                    shadow-[0_0_35px_rgba(168,85,247,0.12)]
+
+                    cursor-pointer
+                  "
+                >
+
+                  {/* Icon glow */}
+
+                  <div
+                    className="
+                      absolute
+                      inset-0
+                      rounded-2xl
+                      bg-purple-500/10
+                      blur-xl
+                    "
+                  />
+
+                  <Icon
+                    size={34}
+                    strokeWidth={1.5}
+                    className="
+                      relative
+                      text-[#DFC0FE]
+                    "
+                  />
+
+                </motion.div>
+
+
+                {/* STEP NUMBER */}
+
+                <div
+                  className="
+                    absolute
+                    top-[-10px]
+                    right-[42px]
+                    z-30
+
+                    flex
+                    items-center
+                    justify-center
+
+                    w-6
+                    h-6
+
+                    rounded-full
+
+                    bg-gradient-to-r
+                    from-purple-500
+                    to-button
+
+                    text-[11px]
+                    font-bold
+                    text-white
+                  "
+                >
+                  {index + 1}
+                </div>
+
+
+                {/* TITLE */}
+
+                <h2
+                  className="
+                    mt-7
+                    text-lg
+                    tracking-wide
+                    font-semibold
+                    font-body
+                    text-white
+                    text-center
+                  "
+                >
+                  {step.title}
+                </h2>
+
+
+                {/* DESCRIPTION */}
+
+                <p
+                  className="
+                    mt-3
+                    text-sm
+                    leading-6
+                    font-medium
+                    text-gray-400
+                    text-center
+                  "
+                >
+                  {step.description}
+                </p>
+
+              </motion.div>
+            );
+          })}
+
         </div>
 
-        <div>
+      </div>
 
-          <div className=' flex flex-row items-center justify-between w-200'>
-            <div className=' rounded-2xl bg-white/5 backdrop-blur-xl shadow-2xl py-5 px-5'><CodeXml color="#DFC0FE" strokeWidth={1.5} /></div>
-            <div className=' rounded-2xl bg-white/5 backdrop-blur-xl shadow-2xl py-5 px-5'><TriangleAlert color="#DFC0FE" strokeWidth={1.5} /></div>
-            <div className=' rounded-2xl bg-white/5 backdrop-blur-xl shadow-2xl py-5 px-5'><Cpu color="#DFC0FE" strokeWidth={1.5} /></div>
-            <div className=' rounded-2xl bg-white/5 backdrop-blur-xl shadow-2xl py-5 px-5'><CircleCheck color="#DFC0FE" strokeWidth={1.5} /></div>
-          </div>
 
-          <div className=' ml-10 mr-10 mt-4 '>
-            <img src="/public/Line.svg" alt="" className='w-180' />
-          </div>
+      {/* =====================================================
+          TECHNICAL PIPELINE
+      ===================================================== */}
+
+      <motion.div
+        initial={{
+          opacity: 0,
+          y: 50,
+        }}
+        whileInView={{
+          opacity: 1,
+          y: 0,
+        }}
+        transition={{
+          duration: 0.8,
+        }}
+        viewport={{
+          once: true,
+          amount: 0.2,
+        }}
+        className="
+          relative
+          z-10
+          mt-20
+
+          flex
+          items-center
+          justify-center
+          gap-3
+
+          px-8
+          py-5
+
+          rounded-2xl
+
+          bg-white/[0.03]
+          backdrop-blur-xl
+
+          border
+          border-white/10
+
+          shadow-[0_0_40px_rgba(139,92,246,0.08)]
+        "
+      >
+
+        <span className="text-sm text-gray-400">
+          Security Pipeline
+        </span>
+
+        <span className="text-purple-400">→</span>
+
+        <span className="text-sm text-gray-200">
+          Semgrep CE
+        </span>
+
+        <span className="text-purple-400">→</span>
+
+        <span className="text-sm text-gray-200">
+          RAG
+        </span>
+
+        <span className="text-purple-400">→</span>
+
+        <span className="text-sm text-gray-200">
+          LoRA-Tuned LLM
+        </span>
+
+        <span className="text-purple-400">→</span>
+
+        <span className="text-sm text-gray-200">
+          Report
+        </span>
+
+      </motion.div>
+
+
+      {/* =====================================================
+          NOVA IMAGE / PROJECT PREVIEW
+          YOUR PICTURE IS NOT REMOVED
+      ===================================================== */}
+
+      <motion.div
+        initial={{
+          opacity: 0,
+          y: 70,
+          scale: 0.96,
+        }}
+        whileInView={{
+          opacity: 1,
+          y: 0,
+          scale: 1,
+        }}
+        transition={{
+          duration: 1,
+          ease: "easeOut",
+        }}
+        viewport={{
+          once: true,
+          amount: 0.2,
+        }}
+        className="
+          relative
+          z-10
+          mt-20
+
+          w-[1000px]
+          max-w-[90vw]
+
+          p-5
+
+          rounded-3xl
+
+          bg-white/[0.035]
+          backdrop-blur-xl
+
+          border
+          border-purple-300/10
+
+          shadow-[0_0_70px_rgba(139,92,246,0.12)]
+        "
+      >
+
+        {/* Preview glow */}
+
+        <div
+          className="
+            absolute
+            inset-0
+            rounded-3xl
+            bg-purple-500/[0.04]
+            blur-2xl
+            pointer-events-none
+          "
+        />
+
+
+        {/* Image */}
+
+        <div className="relative overflow-hidden rounded-2xl">
+
+          <img
+            src="/NOVA.png"
+            alt="NOVA Security Assistant Interface"
+            className="
+              w-full
+              h-auto
+
+              border
+              border-gray-700/60
+
+              rounded-2xl
+
+              shadow-2xl
+
+              transition-transform
+              duration-700
+
+              hover:scale-[1.015]
+            "
+          />
+
+          {/* Image overlay */}
+
+          <div
+            className="
+              absolute
+              inset-0
+              rounded-2xl
+              bg-gradient-to-t
+              from-black/20
+              via-transparent
+              to-transparent
+              pointer-events-none
+            "
+          />
 
         </div>
 
-        <div className=' -mt-17 flex flex-row items-center justify-between w-230 gap-2'>
+      </motion.div>
 
-            <div className=' flex flex-col items-center justify-between'>
-              <h1 className=' text-lg tracking-wide font-medium font-body'>Write Code</h1>
-              <p className='font-medium text-base text-gray-300'>Developer writes code in<br></br><span className=' ml-10'>VS Code as usual.</span></p>
-            </div>
-            <div className=' flex flex-col items-center justify-between'>
-              <h1 className=' text-lg tracking-wide font-medium font-body'>Error Detected</h1>
-              <p className='font-medium text-base text-gray-300'>Extension detects errors in real-<br></br><span className=' ml-25'>time.</span></p>
-            </div>
-            <div className=' flex flex-col items-center justify-between'>
-              <h1 className=' text-lg tracking-wide font-medium font-body'>AI Analyzes</h1>
-              <p className='font-medium text-base text-gray-300'>AI processes the issue and<br></br><span className=' ml-12'>finds solutions.</span></p>
-            </div>
-            <div className=' flex flex-col items-center justify-between'>
-              <h1 className=' text-lg tracking-wide font-medium font-body'>Solution Appears</h1>
-              <p className='font-medium text-base text-gray-300'>Extension detects errors in real-<br></br><span className=' ml-16'>finds solutions.</span></p>
-            </div>
-          </div>
 
-          <div className=' flex items-center py-5 px-50'>
-            <img src="/public/NOVA.png" alt=""  className='border-2 border-gray-300 rounded-2xl'/>
-          </div>          
-    </div>
-  
-  )
-}
+      {/* =====================================================
+          FINAL EXPLANATION
+      ===================================================== */}
 
-export default How_It_Works
+      <motion.div
+        initial={{
+          opacity: 0,
+          y: 30,
+        }}
+        whileInView={{
+          opacity: 1,
+          y: 0,
+        }}
+        transition={{
+          duration: 0.8,
+        }}
+        viewport={{
+          once: true,
+        }}
+        className="
+          relative
+          z-10
+          mt-12
+          max-w-3xl
+          px-6
+          text-center
+        "
+      >
+
+        <p className="text-gray-400 font-body leading-7">
+
+          NOVA first detects security vulnerabilities using{" "}
+          <span className="text-purple-300 font-semibold">
+            Semgrep CE
+          </span>
+          . Relevant security knowledge is then retrieved using{" "}
+          <span className="text-purple-300 font-semibold">
+            RAG
+          </span>
+          , while the{" "}
+          <span className="text-purple-300 font-semibold">
+            LoRA-tuned LLM
+          </span>
+          {" "}analyzes the vulnerability, explains its root cause,
+          assesses its impact, and provides practical remediation guidance.
+
+        </p>
+
+      </motion.div>
+
+    </section>
+  );
+};
+
+export default How_It_Works;
