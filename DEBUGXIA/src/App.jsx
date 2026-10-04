@@ -25,9 +25,10 @@ import Edit_Profile from "./pages2.o/Edit_Profile";
 import NewChat from "./pages2.o/NewChat";
 
 
-// ===============================
+// =====================================================
 // PROTECTED ROUTE
-// ===============================
+// =====================================================
+
 const ProtectedRoute = ({ isAuth, children }) => {
   if (!isAuth) {
     return <Navigate to="/SingIn" replace />;
@@ -37,9 +38,10 @@ const ProtectedRoute = ({ isAuth, children }) => {
 };
 
 
-// ===============================
+// =====================================================
 // PUBLIC ROUTE
-// ===============================
+// =====================================================
+
 const PublicRoute = ({ isAuth, children }) => {
   if (isAuth) {
     return <Navigate to="/NewChat" replace />;
@@ -49,15 +51,21 @@ const PublicRoute = ({ isAuth, children }) => {
 };
 
 
+// =====================================================
+// APP
+// =====================================================
+
 const App = () => {
 
   const [isAuth, setIsAuth] = useState(false);
+
   const location = useLocation();
 
 
-  // ===============================
+  // =====================================================
   // AFTER LOGIN ROUTES
-  // ===============================
+  // =====================================================
+
   const afterLoginRoutes = [
     "/NewChat",
     "/Profile",
@@ -65,16 +73,29 @@ const App = () => {
   ];
 
 
-  // Check whether current page
-  // belongs to logged-in section
+  // =====================================================
+  // AUTH ROUTES WITHOUT NAVBAR / FOOTER
+  // =====================================================
+
+  const authPages = [
+    "/SingIn",
+    "/Get_Started",
+  ];
+
+
+  // Is current page an after-login page?
   const isAfterLoginRoute = afterLoginRoutes.includes(
     location.pathname
   );
 
 
-  // ===============================
-  // NAVBAR / FOOTER
-  // ===============================
+  // Is current page Sign In / Get Started?
+  const isAuthPage = authPages.includes(
+    location.pathname
+  );
+
+
+  // Show logged-in layout only on logged-in pages
   const showAfterLoginLayout =
     isAuth && isAfterLoginRoute;
 
@@ -92,12 +113,15 @@ const App = () => {
       "
     >
 
-      {/* =========================================
+
+      {/* =====================================================
           FLOATING PARTICLES + SHOOTING STARS
-      ========================================= */}
+      ===================================================== */}
+
       <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden">
 
         {/* Floating Particles */}
+
         {[...Array(40)].map((_, i) => (
           <motion.div
             key={`particle-${i}`}
@@ -122,6 +146,7 @@ const App = () => {
 
 
         {/* Shooting Stars */}
+
         {[...Array(3)].map((_, i) => (
           <motion.div
             key={`shooting-${i}`}
@@ -145,7 +170,8 @@ const App = () => {
             }}
           >
 
-            {/* Trail */}
+            {/* Shooting Star Trail */}
+
             <div
               className="
                 absolute
@@ -165,7 +191,9 @@ const App = () => {
               }}
             />
 
+
             {/* Star */}
+
             <div
               className="
                 absolute
@@ -179,8 +207,7 @@ const App = () => {
                 textShadow:
                   "0 0 5px white, 0 0 12px white, 0 0 25px rgba(120,190,255,0.9)",
               }}
-            >
-            </div>
+            />
 
           </motion.div>
         ))}
@@ -188,29 +215,37 @@ const App = () => {
       </div>
 
 
-      {/* =========================================
+      {/* =====================================================
           NAVBAR
-      ========================================= */}
+          
+          IMPORTANT:
+          SignIn + GetStarted have NO navbar.
+      ===================================================== */}
 
-      {showAfterLoginLayout ? (
-        <Navbar2 setIsAuth={setIsAuth} />
-      ) : (
-        <Navbar
-          isAuth={isAuth}
-          setIsAuth={setIsAuth}
-        />
+      {!isAuthPage && (
+        showAfterLoginLayout ? (
+          <Navbar2
+            setIsAuth={setIsAuth}
+          />
+        ) : (
+          <Navbar
+            isAuth={isAuth}
+            setIsAuth={setIsAuth}
+          />
+        )
       )}
 
 
-      {/* =========================================
+      {/* =====================================================
           ROUTES
-      ========================================= */}
+      ===================================================== */}
 
       <Routes>
 
-        {/* =========================
+
+        {/* =================================================
             PUBLIC ROUTES
-        ========================= */}
+        ================================================= */}
 
         <Route
           path="/"
@@ -238,23 +273,25 @@ const App = () => {
         />
 
 
-        {/* =========================
+        {/* =================================================
             SIGN IN
-        ========================= */}
+        ================================================= */}
 
         <Route
           path="/SingIn"
           element={
             <PublicRoute isAuth={isAuth}>
-              <SingIn setIsAuth={setIsAuth} />
+              <SingIn
+                setIsAuth={setIsAuth}
+              />
             </PublicRoute>
           }
         />
 
 
-        {/* =========================
-            AFTER LOGIN ROUTES
-        ========================= */}
+        {/* =================================================
+            AFTER LOGIN
+        ================================================= */}
 
         <Route
           path="/NewChat"
@@ -284,9 +321,9 @@ const App = () => {
         />
 
 
-        {/* =========================
+        {/* =================================================
             POLICIES
-        ========================= */}
+        ================================================= */}
 
         <Route
           path="/Terms_and_con"
@@ -299,9 +336,9 @@ const App = () => {
         />
 
 
-        {/* =========================
+        {/* =================================================
             404
-        ========================= */}
+        ================================================= */}
 
         <Route
           path="*"
@@ -311,21 +348,29 @@ const App = () => {
       </Routes>
 
 
-      {/* =========================================
+      {/* =====================================================
           FOOTER
-      ========================================= */}
+          
+          IMPORTANT:
+          SignIn + GetStarted have NO footer.
+      ===================================================== */}
 
-      {showAfterLoginLayout ? (
-        <Footer2 setIsAuth={setIsAuth} />
-      ) : (
-        <Footer
-          isAuth={isAuth}
-          setIsAuth={setIsAuth}
-        />
+      {!isAuthPage && (
+        showAfterLoginLayout ? (
+          <Footer2
+            setIsAuth={setIsAuth}
+          />
+        ) : (
+          <Footer
+            isAuth={isAuth}
+            setIsAuth={setIsAuth}
+          />
+        )
       )}
 
     </div>
   );
 };
+
 
 export default App;
