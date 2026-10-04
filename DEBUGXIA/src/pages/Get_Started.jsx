@@ -9,7 +9,7 @@ import {
   ArrowRight,
 } from "lucide-react";
 
-const SignIn = ({ setIsAuth }) => {
+const Get_Started = ({ setIsAuth }) => {
   const navigate = useNavigate();
 
   const handleLogin = () => {
@@ -549,4 +549,4 @@ const SignIn = ({ setIsAuth }) => {
   );
 };
 
-export default SignIn;
+export default Get_Started;

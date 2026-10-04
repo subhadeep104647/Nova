@@ -464,42 +464,6 @@ const SignIn = ({ setIsAuth }) => {
 
 
             {/* =========================================
-                SIGN UP
-            ========================================= */}
-
-            <motion.p
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.85 }}
-              className="
-                text-center
-                text-sm
-                text-gray-500
-                mt-8
-                font-nova
-              "
-            >
-
-              New to NOVA?{" "}
-
-              <Link
-                to="/Get_Started"
-                className="
-                  text-purple-400
-                  hover:text-purple-300
-                  underline
-                  underline-offset-4
-                  transition-colors
-                "
-              >
-                Sing Up
-              </Link>
-
-            </motion.p>
-
-
-
-            {/* =========================================
                 TERMS
             ========================================= */}
 

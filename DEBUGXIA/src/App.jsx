@@ -80,6 +80,9 @@ const App = () => {
   const authPages = [
     "/SingIn",
     "/Get_Started",
+    "/About",
+    "/Terms_and_con",
+    "/Privacy_Policy",
   ];
 
 
