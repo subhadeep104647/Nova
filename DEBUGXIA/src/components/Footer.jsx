@@ -6,195 +6,228 @@ import Icons from "./icon/Icons";
 
 const Footer = () => {
   return (
-    <footer className="relative z-20 w-full mt-24 px-4 md:px-8 pb-6">
-
-      {/* =========================================
-          FOOTER CONTAINER
-      ========================================== */}
+    <footer
+      className="
+        relative
+        z-20
+        w-full
+        mt-20
+        px-6
+        md:px-10
+        pb-6
+      "
+    >
 
       <div
         className="
-          relative
-          overflow-hidden
-          rounded-3xl
-
-          bg-[#080810]/80
-          backdrop-blur-2xl
-
+          min-h-[280px]
+          rounded-2xl
+          bg-white/5
+          backdrop-blur-xl
+          shadow-2xl
           border
-          border-white/[0.08]
+          border-gray-800
+          px-8
+          md:px-12
+          py-10
 
-          shadow-[0_0_60px_rgba(99,102,241,0.08)]
+          flex
+          flex-col
+          lg:flex-row
 
-          px-6
-          md:px-10
-          lg:px-14
+          items-center
+          lg:items-start
 
-          pt-12
-          pb-8
+          justify-between
+
+          gap-12
         "
       >
 
-        {/* =========================================
-            BACKGROUND GLOW
-        ========================================== */}
+        {/* =====================================================
+            BRAND
+        ===================================================== */}
 
         <div
           className="
-            absolute
-            -top-32
-            left-1/2
-            -translate-x-1/2
-            w-[500px]
-            h-[250px]
-            rounded-full
-            bg-purple-600/10
-            blur-[120px]
-            pointer-events-none
-          "
-        />
-
-        <div
-          className="
-            absolute
-            bottom-0
-            right-0
-            w-[300px]
-            h-[200px]
-            rounded-full
-            bg-blue-600/5
-            blur-[100px]
-            pointer-events-none
-          "
-        />
-
-
-        {/* =========================================
-            MAIN FOOTER CONTENT
-        ========================================== */}
-
-        <div
-          className="
-            relative
-            z-10
-
-            grid
-            grid-cols-1
-            md:grid-cols-2
-            lg:grid-cols-4
-
-            gap-12
-            lg:gap-8
+            flex
+            flex-col
+            items-center
+            justify-center
+            min-w-[220px]
           "
         >
 
-          {/* =====================================
-              BRAND
-          ====================================== */}
+          <Logo />
 
-          <div className="lg:col-span-1">
+          <div
+            className="
+              flex
+              flex-col
+              items-center
+              gap-4
+              mt-5
+            "
+          >
 
-            <div className="flex flex-col items-start">
+            <h1
+              className="
+                text-center
+                font-medium
+                text-lg
+                text-white
+                tracking-wide
+              "
+            >
+              Your AI
+              <br />
 
-              <Logo />
-
-              <p
+              <span
                 className="
-                  mt-5
-                  max-w-[260px]
-                  text-sm
-                  leading-6
-                  text-gray-400
+                  bg-gradient-to-r
+                  from-blue-500
+                  via-purple-500
+                  to-cyan-400
+                  bg-clip-text
+                  text-transparent
+                  text-xl
+                  font-semibold
                 "
               >
-                AI-powered code security that helps developers
-                detect vulnerabilities, understand risks, and
-                build safer software.
-              </p>
+                Code Security Assistant
+              </span>
+            </h1>
 
-              {/* Security badge */}
+            <p
+              className="
+                text-center
+                text-sm
+                text-gray-500
+                max-w-[220px]
+              "
+            >
+              Detect vulnerabilities.
+              Understand the risk.
+              Secure your code.
+            </p>
 
-              <div
-                className="
-                  mt-6
-                  inline-flex
-                  items-center
-                  gap-2
+            <Icons />
 
-                  px-3
-                  py-1.5
+          </div>
 
-                  rounded-full
+        </div>
 
-                  bg-purple-500/10
-                  border
-                  border-purple-400/20
+        {/* =====================================================
+            FOOTER LINKS
+        ===================================================== */}
 
-                  text-xs
-                  text-purple-300
-                "
-              >
-                <span
-                  className="
-                    w-1.5
-                    h-1.5
-                    rounded-full
-                    bg-purple-400
-                    shadow-[0_0_8px_rgba(168,85,247,0.8)]
-                  "
-                />
+        <div
+          className="
+            flex
+            flex-wrap
+            justify-center
+            lg:justify-end
+            gap-14
+            md:gap-20
+            text-white
+          "
+        >
 
-                AI Code Security
-              </div>
+          {/* =================================================
+              CONTACT
+          ================================================= */}
 
-              {/* Social Icons */}
+          <div className="flex flex-col gap-5">
 
-              <div className="mt-6">
-                <Icons />
-              </div>
+            <h2
+              className="
+                font-semibold
+                text-lg
+                tracking-wide
+                text-blue-300
+              "
+            >
+              Contact
+            </h2>
+
+            <div
+              className="
+                flex
+                flex-col
+                gap-2
+                text-sm
+                text-gray-400
+              "
+            >
+
+              <span className="hover:text-white transition">
+                subhadeepbiswas205@gmail.com
+              </span>
+
+              <span className="hover:text-white transition">
+                spedoriobusiness@gmail.com
+              </span>
+
+              <span className="hover:text-white transition">
+                sohelighosh30@gmail.com
+              </span>
+
+              <span className="hover:text-white transition">
+                sanchariray71@gmail.com
+              </span>
+
+              <span className="hover:text-white transition">
+                sikdarritisha@gmail.com
+              </span>
 
             </div>
 
           </div>
 
+          {/* =================================================
+              QUICK LINKS
+          ================================================= */}
 
-          {/* =====================================
-              PRODUCT
-          ====================================== */}
-
-          <div>
+          <div className="flex flex-col gap-5">
 
             <h2
               className="
-                text-sm
                 font-semibold
-                uppercase
-                tracking-[0.18em]
-                text-white
+                text-lg
+                tracking-wide
+                text-blue-300
               "
             >
-              Product
+              Quick Links
             </h2>
 
             <div
               className="
-                mt-6
                 flex
                 flex-col
-                gap-4
+                gap-3
                 text-sm
                 text-gray-400
               "
             >
 
               <Link
-                to="/Features"
+                to="/"
                 className="
-                  w-fit
                   hover:text-white
                   hover:translate-x-1
                   transition-all
-                  duration-300
+                "
+              >
+                Home
+              </Link>
+
+              <Link
+                to="/Features"
+                className="
+                  hover:text-white
+                  hover:translate-x-1
+                  transition-all
                 "
               >
                 Features
@@ -203,60 +236,52 @@ const Footer = () => {
               <Link
                 to="/How_It_Works"
                 className="
-                  w-fit
                   hover:text-white
                   hover:translate-x-1
                   transition-all
-                  duration-300
                 "
               >
                 How It Works
               </Link>
 
               <Link
-                to="/Get_Started"
+                to="/About"
                 className="
-                  w-fit
                   hover:text-white
                   hover:translate-x-1
                   transition-all
-                  duration-300
                 "
               >
-                Get Started
+                About NOVA
               </Link>
 
               <Link
-                to="/SingIn"
+                to="/Get_Started"
                 className="
-                  w-fit
                   hover:text-white
                   hover:translate-x-1
                   transition-all
-                  duration-300
                 "
               >
-                Sign In
+                Get Started
               </Link>
 
             </div>
 
           </div>
 
+          {/* =================================================
+              SECURITY
+          ================================================= */}
 
-          {/* =====================================
-              SECURITY PIPELINE
-          ====================================== */}
-
-          <div>
+          <div className="flex flex-col gap-5">
 
             <h2
               className="
-                text-sm
                 font-semibold
-                uppercase
-                tracking-[0.18em]
-                text-white
+                text-lg
+                tracking-wide
+                text-blue-300
               "
             >
               Security
@@ -264,86 +289,61 @@ const Footer = () => {
 
             <div
               className="
-                mt-6
                 flex
                 flex-col
-                gap-4
+                gap-3
                 text-sm
                 text-gray-400
               "
             >
 
-              <span className="hover:text-gray-200 transition-colors">
-                Vulnerability Detection
-              </span>
+              <span>Semgrep CE</span>
 
-              <span className="hover:text-gray-200 transition-colors">
-                RAG Context Retrieval
-              </span>
+              <span>RAG Context</span>
 
-              <span className="hover:text-gray-200 transition-colors">
-                Explainable AI
-              </span>
+              <span>LoRA-Tuned LLM</span>
 
-              <span className="hover:text-gray-200 transition-colors">
-                Remediation Guidance
-              </span>
+              <span>Explainable Analysis</span>
+
+              <span>Security Reports</span>
 
             </div>
 
           </div>
 
+          {/* =================================================
+              LEGAL
+          ================================================= */}
 
-          {/* =====================================
-              COMPANY + LEGAL
-          ====================================== */}
-
-          <div>
+          <div className="flex flex-col gap-5">
 
             <h2
               className="
-                text-sm
                 font-semibold
-                uppercase
-                tracking-[0.18em]
-                text-white
+                text-lg
+                tracking-wide
+                text-blue-300
               "
             >
-              Company
+              Legal
             </h2>
 
             <div
               className="
-                mt-6
                 flex
                 flex-col
-                gap-4
+                gap-3
                 text-sm
                 text-gray-400
               "
             >
 
               <Link
-                to="/About"
-                className="
-                  w-fit
-                  hover:text-white
-                  hover:translate-x-1
-                  transition-all
-                  duration-300
-                "
-              >
-                About NOVA
-              </Link>
-
-              <Link
                 to="/Terms_and_con"
                 className="
-                  w-fit
                   hover:text-white
                   hover:translate-x-1
                   transition-all
-                  duration-300
                 "
               >
                 Terms & Conditions
@@ -352,11 +352,9 @@ const Footer = () => {
               <Link
                 to="/Privacy_Policy"
                 className="
-                  w-fit
                   hover:text-white
                   hover:translate-x-1
                   transition-all
-                  duration-300
                 "
               >
                 Privacy Policy
@@ -368,59 +366,23 @@ const Footer = () => {
 
         </div>
 
+      </div>
 
-        {/* =========================================
-            DIVIDER
-        ========================================== */}
+      {/* =====================================================
+          COPYRIGHT
+      ===================================================== */}
 
-        <div
-          className="
-            relative
-            z-10
-            my-10
-            h-px
-            w-full
-            bg-gradient-to-r
-            from-transparent
-            via-white/10
-            to-transparent
-          "
-        />
-
-
-        {/* =========================================
-            BOTTOM BAR
-        ========================================== */}
-
-        <div
-          className="
-            relative
-            z-10
-
-            flex
-            flex-col
-            md:flex-row
-
-            items-center
-            justify-between
-
-            gap-4
-
-            text-xs
-            text-gray-500
-          "
-        >
-
-          <p>
-            © {new Date().getFullYear()} NOVA. All rights reserved.
-          </p>
-
-          <p className="text-gray-600">
-            Detect. Explain. Understand. Secure.
-          </p>
-
-        </div>
-
+      <div
+        className="
+          text-center
+          text-xs
+          text-gray-600
+          mt-5
+          font-nova
+        "
+      >
+        © {new Date().getFullYear()} NOVA.
+        All rights reserved.
       </div>
 
     </footer>

@@ -1,23 +1,5 @@
 import React from "react";
-
-import {
-  ShieldCheck,
-  BrainCircuit,
-  SearchCode,
-  Bug,
-  FileSearch,
-  Sparkles,
-  Code2,
-  LockKeyhole,
-  ChartNoAxesCombined,
-  GraduationCap,
-  Globe,
-  GitBranch,
-  Terminal,
-  Zap,
-  Target,
-  Layers3,
-} from "lucide-react";
+import { ShieldCheck, BrainCircuit, SearchCode, Bug, FileSearch, Sparkles, Code2, LockKeyhole, ChartNoAxesCombined, GraduationCap, Globe, GitBranch, Terminal, Zap, Target, Layers3,} from "lucide-react";
 
 const About = () => {
   return (

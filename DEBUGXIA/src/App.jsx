@@ -4,9 +4,7 @@ import { motion } from "framer-motion";
 
 // Components
 import Navbar from "./components/Navbar";
-import Navbar2 from "./components/Navbar2";
-import Footer from "./components/Footer";
-import Footer2 from "./components/Footer2";
+import Sidebar from "./components/Sidebar";
 
 // Public Pages
 import Home from "./pages/Home";
@@ -23,6 +21,8 @@ import Privacy_Policy from "./pages/Privacy_Policy";
 import Profile from "./pages2.o/Profile";
 import Edit_Profile from "./pages2.o/Edit_Profile";
 import NewChat from "./pages2.o/NewChat";
+import Analysis from "./pages2.o/Analysis";
+import Notebook from "./pages2.o/Notebook";
 
 
 // =====================================================
@@ -70,11 +70,13 @@ const App = () => {
     "/NewChat",
     "/Profile",
     "/Edit_Profile",
+    "/Analysis",
+    "/Notebook",
   ];
 
 
   // =====================================================
-  // AUTH ROUTES WITHOUT NAVBAR / FOOTER
+  // AUTH ROUTES WITHOUT NAVBAR
   // =====================================================
 
   const authPages = [
@@ -86,19 +88,21 @@ const App = () => {
   ];
 
 
-  // Is current page an after-login page?
-  const isAfterLoginRoute = afterLoginRoutes.includes(
-    location.pathname
-  );
+  // =====================================================
+  // CHECK CURRENT ROUTE
+  // =====================================================
+
+  const isAfterLoginRoute =
+    afterLoginRoutes.includes(location.pathname);
+
+  const isAuthPage =
+    authPages.includes(location.pathname);
 
 
-  // Is current page Sign In / Get Started?
-  const isAuthPage = authPages.includes(
-    location.pathname
-  );
+  // =====================================================
+  // SHOW LOGGED-IN SIDEBAR
+  // =====================================================
 
-
-  // Show logged-in layout only on logged-in pages
   const showAfterLoginLayout =
     isAuth && isAfterLoginRoute;
 
@@ -219,17 +223,21 @@ const App = () => {
 
 
       {/* =====================================================
-          NAVBAR
+          NAVBAR / SIDEBAR
           
-          IMPORTANT:
-          SignIn + GetStarted have NO navbar.
+          Public pages:
+          Navbar
+
+          Logged-in pages:
+          New Sidebar
+          
+          SignIn + GetStarted + About + Policies:
+          No navbar/sidebar
       ===================================================== */}
 
       {!isAuthPage && (
         showAfterLoginLayout ? (
-          <Navbar2
-            setIsAuth={setIsAuth}
-          />
+          <Sidebar />
         ) : (
           <Navbar
             isAuth={isAuth}
@@ -323,6 +331,24 @@ const App = () => {
           }
         />
 
+        <Route
+          path="/Analysis"
+          element={
+            <ProtectedRoute isAuth={isAuth}>
+              <Analysis />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/Notebook"
+          element={
+            <ProtectedRoute isAuth={isAuth}>
+              <Notebook />
+            </ProtectedRoute>
+          }
+        />
+
 
         {/* =================================================
             POLICIES
@@ -349,27 +375,6 @@ const App = () => {
         />
 
       </Routes>
-
-
-      {/* =====================================================
-          FOOTER
-          
-          IMPORTANT:
-          SignIn + GetStarted have NO footer.
-      ===================================================== */}
-
-      {!isAuthPage && (
-        showAfterLoginLayout ? (
-          <Footer2
-            setIsAuth={setIsAuth}
-          />
-        ) : (
-          <Footer
-            isAuth={isAuth}
-            setIsAuth={setIsAuth}
-          />
-        )
-      )}
 
     </div>
   );
