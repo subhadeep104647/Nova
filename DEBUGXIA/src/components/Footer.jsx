@@ -12,22 +12,33 @@ const Footer = () => {
         z-20
         w-full
         mt-20
-        px-6
+        px-4
+        sm:px-6
         md:px-10
         pb-6
       "
     >
+      {/* =====================================================
+          MAIN FOOTER
+      ===================================================== */}
 
       <div
         className="
+          relative
+          overflow-hidden
           min-h-[280px]
-          rounded-2xl
-          bg-white/5
-          backdrop-blur-xl
-          shadow-2xl
+          rounded-3xl
+
+          bg-white/[0.04]
+          backdrop-blur-2xl
+
           border
-          border-gray-800
-          px-8
+          border-white/10
+
+          shadow-[0_0_50px_rgba(80,50,180,0.12)]
+
+          px-6
+          sm:px-8
           md:px-12
           py-10
 
@@ -43,21 +54,53 @@ const Footer = () => {
           gap-12
         "
       >
-
-        {/* =====================================================
-            BRAND
-        ===================================================== */}
+        {/* =================================================
+            BACKGROUND GLOW
+        ================================================= */}
 
         <div
           className="
+            absolute
+            -top-32
+            -left-32
+            w-72
+            h-72
+            rounded-full
+            bg-purple-600/10
+            blur-3xl
+            pointer-events-none
+          "
+        />
+
+        <div
+          className="
+            absolute
+            -bottom-32
+            right-0
+            w-72
+            h-72
+            rounded-full
+            bg-blue-600/10
+            blur-3xl
+            pointer-events-none
+          "
+        />
+
+        {/* =================================================
+            BRAND
+        ================================================= */}
+
+        <div
+          className="
+            relative
             flex
             flex-col
             items-center
             justify-center
             min-w-[220px]
+            text-center
           "
         >
-
           <Logo />
 
           <div
@@ -69,7 +112,6 @@ const Footer = () => {
               mt-5
             "
           >
-
             <h1
               className="
                 text-center
@@ -102,43 +144,46 @@ const Footer = () => {
               className="
                 text-center
                 text-sm
+                leading-6
                 text-gray-500
-                max-w-[220px]
+                max-w-[240px]
               "
             >
               Detect vulnerabilities.
+              <br />
               Understand the risk.
+              <br />
               Secure your code.
             </p>
 
             <Icons />
-
           </div>
-
         </div>
 
-        {/* =====================================================
+        {/* =================================================
             FOOTER LINKS
-        ===================================================== */}
+        ================================================= */}
 
         <div
           className="
+            relative
+            w-full
             flex
             flex-wrap
             justify-center
             lg:justify-end
-            gap-14
-            md:gap-20
+            gap-x-12
+            sm:gap-x-16
+            md:gap-x-20
+            gap-y-10
             text-white
           "
         >
-
           {/* =================================================
               CONTACT
           ================================================= */}
 
-          <div className="flex flex-col gap-5">
-
+          <div className="flex flex-col gap-5 min-w-[190px]">
             <h2
               className="
                 font-semibold
@@ -159,37 +204,48 @@ const Footer = () => {
                 text-gray-400
               "
             >
-
-              <span className="hover:text-white transition">
+              <a
+                href="mailto:subhadeepbiswas205@gmail.com"
+                className="hover:text-white transition-colors"
+              >
                 subhadeepbiswas205@gmail.com
-              </span>
+              </a>
 
-              <span className="hover:text-white transition">
+              <a
+                href="mailto:spedoriobusiness@gmail.com"
+                className="hover:text-white transition-colors"
+              >
                 spedoriobusiness@gmail.com
-              </span>
+              </a>
 
-              <span className="hover:text-white transition">
+              <a
+                href="mailto:sohelighosh30@gmail.com"
+                className="hover:text-white transition-colors"
+              >
                 sohelighosh30@gmail.com
-              </span>
+              </a>
 
-              <span className="hover:text-white transition">
+              <a
+                href="mailto:sanchariray71@gmail.com"
+                className="hover:text-white transition-colors"
+              >
                 sanchariray71@gmail.com
-              </span>
+              </a>
 
-              <span className="hover:text-white transition">
+              <a
+                href="mailto:sikdarritisha@gmail.com"
+                className="hover:text-white transition-colors"
+              >
                 sikdarritisha@gmail.com
-              </span>
-
+              </a>
             </div>
-
           </div>
 
           {/* =================================================
               QUICK LINKS
           ================================================= */}
 
-          <div className="flex flex-col gap-5">
-
+          <div className="flex flex-col gap-5 min-w-[140px]">
             <h2
               className="
                 font-semibold
@@ -210,7 +266,6 @@ const Footer = () => {
                 text-gray-400
               "
             >
-
               <Link
                 to="/"
                 className="
@@ -265,17 +320,14 @@ const Footer = () => {
               >
                 Get Started
               </Link>
-
             </div>
-
           </div>
 
           {/* =================================================
               SECURITY
           ================================================= */}
 
-          <div className="flex flex-col gap-5">
-
+          <div className="flex flex-col gap-5 min-w-[160px]">
             <h2
               className="
                 font-semibold
@@ -296,27 +348,33 @@ const Footer = () => {
                 text-gray-400
               "
             >
+              <span className="hover:text-white transition-colors">
+                Semgrep CE
+              </span>
 
-              <span>Semgrep CE</span>
+              <span className="hover:text-white transition-colors">
+                RAG Context
+              </span>
 
-              <span>RAG Context</span>
+              <span className="hover:text-white transition-colors">
+                LoRA-Tuned LLM
+              </span>
 
-              <span>LoRA-Tuned LLM</span>
+              <span className="hover:text-white transition-colors">
+                Explainable Analysis
+              </span>
 
-              <span>Explainable Analysis</span>
-
-              <span>Security Reports</span>
-
+              <span className="hover:text-white transition-colors">
+                Security Reports
+              </span>
             </div>
-
           </div>
 
           {/* =================================================
               LEGAL
           ================================================= */}
 
-          <div className="flex flex-col gap-5">
-
+          <div className="flex flex-col gap-5 min-w-[150px]">
             <h2
               className="
                 font-semibold
@@ -337,7 +395,6 @@ const Footer = () => {
                 text-gray-400
               "
             >
-
               <Link
                 to="/Terms_and_con"
                 className="
@@ -359,13 +416,9 @@ const Footer = () => {
               >
                 Privacy Policy
               </Link>
-
             </div>
-
           </div>
-
         </div>
-
       </div>
 
       {/* =====================================================
@@ -384,7 +437,6 @@ const Footer = () => {
         © {new Date().getFullYear()} NOVA.
         All rights reserved.
       </div>
-
     </footer>
   );
 };
