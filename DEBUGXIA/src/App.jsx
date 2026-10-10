@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 // Components
 import Navbar from "./components/Navbar";
 import Sidebar from "./components/Sidebar";
+import Footer from "./components/Footer";
 
 // Public Pages
 import Home from "./pages/Home";
@@ -113,6 +114,14 @@ const App = () => {
 
   const showParticles =
     !isAuth;
+
+
+  // =====================================================
+  // SHOW FOOTER ONLY ON HOME PAGE
+  // =====================================================
+
+  const showFooter =
+    location.pathname === "/" && !isAuth;
 
 
   return (
@@ -391,6 +400,14 @@ const App = () => {
         />
 
       </Routes>
+
+
+      {/* =====================================================
+          FOOTER — HOME PAGE ONLY
+      ===================================================== */}
+
+      {showFooter && <Footer />}
+
 
     </div>
   );
