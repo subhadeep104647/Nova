@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { ShieldCheck } from "lucide-react";
 
+import Logo from "./header/Logo";
 import Icons from "./icon/Icons";
 
 const Footer = () => {
@@ -28,21 +28,29 @@ const Footer = () => {
           overflow-hidden
           min-h-[280px]
           rounded-3xl
+
           bg-white/[0.04]
           backdrop-blur-2xl
+
           border
           border-white/10
+
           shadow-[0_0_50px_rgba(80,50,180,0.12)]
+
           px-6
           sm:px-8
           md:px-12
           py-10
+
           flex
           flex-col
           lg:flex-row
+
           items-center
           lg:items-start
+
           justify-between
+
           gap-12
         "
       >
@@ -93,29 +101,7 @@ const Footer = () => {
             text-center
           "
         >
-          {/* NOVA ICON */}
-
-          <div
-            className="
-              w-16
-              h-16
-              rounded-2xl
-              flex
-              items-center
-              justify-center
-              bg-gradient-to-br
-              from-blue-500
-              via-purple-600
-              to-cyan-400
-              shadow-[0_0_30px_rgba(99,102,241,0.35)]
-            "
-          >
-            <ShieldCheck
-              size={34}
-              strokeWidth={2}
-              className="text-white"
-            />
-          </div>
+          <Logo />
 
           <div
             className="
@@ -203,7 +189,7 @@ const Footer = () => {
                 font-semibold
                 text-lg
                 tracking-wide
-                text-blue-300
+                text-nav
               "
             >
               Contact
@@ -233,13 +219,6 @@ const Footer = () => {
               </a>
 
               <a
-                href="mailto:sohelighosh30@gmail.com"
-                className="hover:text-white transition-colors"
-              >
-                sohelighosh30@gmail.com
-              </a>
-
-              <a
                 href="mailto:sanchariray71@gmail.com"
                 className="hover:text-white transition-colors"
               >
@@ -265,7 +244,7 @@ const Footer = () => {
                 font-semibold
                 text-lg
                 tracking-wide
-                text-blue-300
+                text-nav
               "
             >
               Quick Links
@@ -347,7 +326,7 @@ const Footer = () => {
                 font-semibold
                 text-lg
                 tracking-wide
-                text-blue-300
+                text-nav
               "
             >
               Security
@@ -394,7 +373,7 @@ const Footer = () => {
                 font-semibold
                 text-lg
                 tracking-wide
-                text-blue-300
+                text-nav
               "
             >
               Legal
