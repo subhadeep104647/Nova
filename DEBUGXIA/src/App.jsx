@@ -107,6 +107,14 @@ const App = () => {
     isAuth && isAfterLoginRoute;
 
 
+  // =====================================================
+  // SHOW PARTICLES ONLY BEFORE LOGIN
+  // =====================================================
+
+  const showParticles =
+    !isAuth;
+
+
   return (
     <div
       className="
@@ -123,114 +131,122 @@ const App = () => {
 
       {/* =====================================================
           FLOATING PARTICLES + SHOOTING STARS
+
+          ONLY BEFORE LOGIN
       ===================================================== */}
 
-      <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden">
+      {showParticles && (
+        <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden">
 
-        {/* Floating Particles */}
+          {/* =================================================
+              FLOATING PARTICLES
+          ================================================= */}
 
-        {[...Array(40)].map((_, i) => (
-          <motion.div
-            key={`particle-${i}`}
-            animate={{
-              y: [0, -100],
-              opacity: [0, 1, 0],
-            }}
-            transition={{
-              duration: Math.random() * 5 + 5,
-              repeat: Infinity,
-              delay: Math.random() * 2,
-            }}
-            className="absolute bg-nav rounded-full"
-            style={{
-              width: Math.random() * 4 + 2,
-              height: Math.random() * 4 + 2,
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-            }}
-          />
-        ))}
-
-
-        {/* Shooting Stars */}
-
-        {[...Array(3)].map((_, i) => (
-          <motion.div
-            key={`shooting-${i}`}
-            className="absolute"
-            initial={{
-              left: "-15%",
-              top: `${-10 + i * 25}%`,
-              opacity: 0,
-            }}
-            animate={{
-              left: "115%",
-              top: `${70 + i * 12}%`,
-              opacity: [0, 0.8, 1, 0.8, 0],
-            }}
-            transition={{
-              duration: Math.random() * 5 + 5,
-              repeat: Infinity,
-              delay: Math.random() * 2,
-              repeatDelay: 3,
-              ease: "easeInOut",
-            }}
-          >
-
-            {/* Shooting Star Trail */}
-
-            <div
-              className="
-                absolute
-                w-56
-                h-[2px]
-                rounded-full
-                bg-gradient-to-r
-                from-transparent
-                via-blue-200/30
-                to-white
-                rotate-[25deg]
-                blur-[1px]
-              "
+          {[...Array(40)].map((_, i) => (
+            <motion.div
+              key={`particle-${i}`}
+              animate={{
+                y: [0, -100],
+                opacity: [0, 1, 0],
+              }}
+              transition={{
+                duration: Math.random() * 5 + 5,
+                repeat: Infinity,
+                delay: Math.random() * 2,
+              }}
+              className="absolute bg-nav rounded-full"
               style={{
-                boxShadow:
-                  "0 0 8px rgba(255,255,255,0.8), 0 0 20px rgba(120,180,255,0.6)",
+                width: Math.random() * 4 + 2,
+                height: Math.random() * 4 + 2,
+                left: `${Math.random() * 100}%`,
+                top: `${Math.random() * 100}%`,
               }}
             />
+          ))}
 
 
-            {/* Star */}
+          {/* =================================================
+              SHOOTING STARS
+          ================================================= */}
 
-            <div
-              className="
-                absolute
-                -top-[7px]
-                -right-[5px]
-                text-white
-                text-2xl
-                leading-none
-              "
-              style={{
-                textShadow:
-                  "0 0 5px white, 0 0 12px white, 0 0 25px rgba(120,190,255,0.9)",
+          {[...Array(3)].map((_, i) => (
+            <motion.div
+              key={`shooting-${i}`}
+              className="absolute"
+              initial={{
+                left: "-15%",
+                top: `${-10 + i * 25}%`,
+                opacity: 0,
               }}
-            />
+              animate={{
+                left: "115%",
+                top: `${70 + i * 12}%`,
+                opacity: [0, 0.8, 1, 0.8, 0],
+              }}
+              transition={{
+                duration: Math.random() * 5 + 5,
+                repeat: Infinity,
+                delay: Math.random() * 2,
+                repeatDelay: 3,
+                ease: "easeInOut",
+              }}
+            >
 
-          </motion.div>
-        ))}
+              {/* Shooting Star Trail */}
 
-      </div>
+              <div
+                className="
+                  absolute
+                  w-56
+                  h-[2px]
+                  rounded-full
+                  bg-gradient-to-r
+                  from-transparent
+                  via-blue-200/30
+                  to-white
+                  rotate-[25deg]
+                  blur-[1px]
+                "
+                style={{
+                  boxShadow:
+                    "0 0 8px rgba(255,255,255,0.8), 0 0 20px rgba(120,180,255,0.6)",
+                }}
+              />
+
+
+              {/* Star */}
+
+              <div
+                className="
+                  absolute
+                  -top-[7px]
+                  -right-[5px]
+                  text-white
+                  text-2xl
+                  leading-none
+                "
+                style={{
+                  textShadow:
+                    "0 0 5px white, 0 0 12px white, 0 0 25px rgba(120,190,255,0.9)",
+                }}
+              />
+
+            </motion.div>
+          ))}
+
+        </div>
+      )}
 
 
       {/* =====================================================
           NAVBAR / SIDEBAR
-          
+
           Public pages:
           Navbar
 
           Logged-in pages:
-          New Sidebar
-          
+          Sidebar
+
           SignIn + GetStarted + About + Policies:
           No navbar/sidebar
       ===================================================== */}
