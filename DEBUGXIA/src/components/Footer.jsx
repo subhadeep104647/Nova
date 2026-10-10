@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { ShieldCheck } from "lucide-react";
 
-import Logo from "./header/Logo";
 import Icons from "./icon/Icons";
 
 const Footer = () => {
@@ -28,29 +28,21 @@ const Footer = () => {
           overflow-hidden
           min-h-[280px]
           rounded-3xl
-
           bg-white/[0.04]
           backdrop-blur-2xl
-
           border
           border-white/10
-
           shadow-[0_0_50px_rgba(80,50,180,0.12)]
-
           px-6
           sm:px-8
           md:px-12
           py-10
-
           flex
           flex-col
           lg:flex-row
-
           items-center
           lg:items-start
-
           justify-between
-
           gap-12
         "
       >
@@ -101,7 +93,29 @@ const Footer = () => {
             text-center
           "
         >
-          <Logo />
+          {/* NOVA ICON */}
+
+          <div
+            className="
+              w-16
+              h-16
+              rounded-2xl
+              flex
+              items-center
+              justify-center
+              bg-gradient-to-br
+              from-blue-500
+              via-purple-600
+              to-cyan-400
+              shadow-[0_0_30px_rgba(99,102,241,0.35)]
+            "
+          >
+            <ShieldCheck
+              size={34}
+              strokeWidth={2}
+              className="text-white"
+            />
+          </div>
 
           <div
             className="
