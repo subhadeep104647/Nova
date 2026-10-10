@@ -1,33 +1,7 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { NavLink } from "react-router-dom";
 
-import {
-  IoLogoGithub,
-  IoLocationOutline,
-  IoLinkOutline,
-  IoMailOutline,
-  IoCalendarOutline,
-  IoPeopleOutline,
-  IoGitBranchOutline,
-  IoStarOutline,
-  IoGitCommitOutline,
-  IoCreateOutline,
-  IoBookOutline,
-  IoFolderOutline,
-  IoChevronForwardOutline,
-  IoRefreshOutline,
-  IoShieldCheckmarkOutline,
-  IoWarningOutline,
-  IoBugOutline,
-  IoScanOutline,
-  IoSparklesOutline,
-  IoTimeOutline,
-  IoCodeSlashOutline,
-  IoTrendingUpOutline,
-  IoDocumentTextOutline,
-  IoCheckmarkCircleOutline,
-  IoLockClosedOutline,
-} from "react-icons/io5";
+import { IoLogoGithub, IoLocationOutline, IoLinkOutline, IoMailOutline, IoCalendarOutline, IoPeopleOutline, IoGitBranchOutline, IoStarOutline, IoGitCommitOutline, IoCreateOutline, IoBookOutline, IoFolderOutline, IoChevronForwardOutline, IoRefreshOutline, IoShieldCheckmarkOutline, IoWarningOutline, IoBugOutline, IoScanOutline, IoSparklesOutline, IoTimeOutline, IoCodeSlashOutline, IoTrendingUpOutline, IoDocumentTextOutline, IoCheckmarkCircleOutline, IoLockClosedOutline,} from "react-icons/io5";
 
 import Profile_Pic from "../components/header/Profile_Pic";
 
@@ -50,9 +24,7 @@ const Profile = () => {
   const [githubConnected, setGithubConnected] = useState(false);
   const [githubError, setGithubError] = useState("");
 
-  /* -------------------------------------------------------
-     LOAD GITHUB PROFILE
-  ------------------------------------------------------- */
+  /* LOAD GITHUB PROFILE */
 
   const loadGithubProfile = async () => {
     setGithubLoading(true);
@@ -70,10 +42,7 @@ const Profile = () => {
         }
       );
 
-      /*
-        401 / 403 means the user is simply not connected.
-        This must NOT break the NOVA profile.
-      */
+      /* 401 / 403 means the user is simply not connected. This must NOT break the NOVA profile.*/
       if (response.status === 401 || response.status === 403) {
         setProfile(null);
         setGithubConnected(false);
@@ -120,9 +89,7 @@ const Profile = () => {
     }
   };
 
-  /* -------------------------------------------------------
-     LOAD GITHUB REPOSITORIES
-  ------------------------------------------------------- */
+  /* LOAD GITHUB REPOSITORIES */
 
   const loadGithubRepositories = async () => {
     try {
@@ -168,9 +135,7 @@ const Profile = () => {
     }
   };
 
-  /* -------------------------------------------------------
-     LOAD NOVA DATA
-  ------------------------------------------------------- */
+  /* LOAD NOVA DATA */
 
   const loadNovaData = async () => {
     setNovaLoading(true);
@@ -209,10 +174,7 @@ const Profile = () => {
     } catch (error) {
       console.warn("NOVA profile data unavailable:", error);
 
-      /*
-        Empty fallback keeps the profile usable even when
-        the backend has no security statistics yet.
-      */
+      /* Empty fallback keeps the profile usable even when, the backend has no security statistics yet.*/
       setNovaStats({
         analyses: 0,
         vulnerabilities: 0,
@@ -230,18 +192,13 @@ const Profile = () => {
     }
   };
 
-  /* -------------------------------------------------------
-     LOAD EVERYTHING
-  ------------------------------------------------------- */
+  /* LOAD EVERYTHING */
 
   const loadAllData = async () => {
     setLoading(true);
 
     try {
-      /*
-        NOVA and GitHub are intentionally loaded independently.
-        If GitHub is not connected, NOVA still works.
-      */
+      /* NOVA and GitHub are intentionally loaded independently.If GitHub is not connected, NOVA still works.*/
       const githubConnectedResult =
         await loadGithubProfile();
 
@@ -263,17 +220,13 @@ const Profile = () => {
     loadAllData();
   }, []);
 
-  /* -------------------------------------------------------
-     REFRESH
-  ------------------------------------------------------- */
+  /* REFRESH */
 
   const handleRefresh = async () => {
     await loadAllData();
   };
 
-  /* -------------------------------------------------------
-     NORMALIZE GITHUB REPOSITORIES
-  ------------------------------------------------------- */
+  /* NORMALIZE GITHUB REPOSITORIES */
 
   const normalizedRepositories = useMemo(() => {
     if (!githubConnected) return [];
@@ -333,15 +286,11 @@ const Profile = () => {
     }));
   }, [repositories, githubConnected]);
 
-  /* -------------------------------------------------------
-     PROFILE COMPLETION
-  ------------------------------------------------------- */
+  /* PROFILE COMPLETION */
 
   const profileCompletion = githubConnected ? 100 : 70;
 
-  /* -------------------------------------------------------
-     GITHUB DERIVED DATA
-  ------------------------------------------------------- */
+  /*  GITHUB DERIVED DATA */
 
   const githubUsername =
     profile?.login ||
@@ -405,9 +354,7 @@ const Profile = () => {
     0
   );
 
-  /* -------------------------------------------------------
-     NOVA DATA
-  ------------------------------------------------------- */
+  /* NOVA DATA */
 
   const analyses =
     Number(
@@ -460,9 +407,7 @@ const Profile = () => {
         0
     );
 
-  /* -------------------------------------------------------
-     DISPLAY IDENTITY
-  ------------------------------------------------------- */
+  /* DISPLAY IDENTITY */
 
   const displayName = githubConnected
     ? githubName
@@ -484,9 +429,7 @@ const Profile = () => {
       novaStats?.user?.bio ||
       "Your AI-powered code security workspace.";
 
-  /* -------------------------------------------------------
-     LANGUAGE COLORS
-  ------------------------------------------------------- */
+  /* LANGUAGE COLORS */
 
   const languageColors = {
     JavaScript: "bg-yellow-400",
@@ -507,9 +450,7 @@ const Profile = () => {
     Unknown: "bg-gray-500",
   };
 
-  /* -------------------------------------------------------
-     TABS
-  ------------------------------------------------------- */
+  /* TABS */
 
   const tabs = [
     {
@@ -534,9 +475,7 @@ const Profile = () => {
     },
   ];
 
-  /* -------------------------------------------------------
-     LOADING
-  ------------------------------------------------------- */
+  /* LOADING */
 
   if (loading && novaLoading && githubLoading) {
     return (
@@ -554,9 +493,7 @@ const Profile = () => {
 
   return (
     <div className="min-h-screen bg-[#05050b] text-white overflow-x-hidden">
-      {/* =====================================================
-          BACKGROUND
-      ===================================================== */}
+      {/* BACKGROUND */}
 
       <div className="fixed inset-0 pointer-events-none overflow-hidden">
         <div className="absolute -top-40 -left-40 w-[500px] h-[500px] bg-purple-600/10 blur-[140px] rounded-full" />
@@ -566,14 +503,10 @@ const Profile = () => {
         <div className="absolute bottom-0 left-1/3 w-[400px] h-[400px] bg-violet-600/10 blur-[140px] rounded-full" />
       </div>
 
-      {/* =====================================================
-          PAGE
-      ===================================================== */}
+      {/* PAGE */}
 
       <main className="relative z-10 max-w-[1500px] mx-auto px-4 sm:px-6 lg:px-8 py-6">
-        {/* ===================================================
-            TOP HEADER
-        =================================================== */}
+        {/* TOP HEADER */}
 
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
           <div>
@@ -607,14 +540,10 @@ const Profile = () => {
           </button>
         </div>
 
-        {/* ===================================================
-            PROFILE GRID
-        =================================================== */}
+        {/* PROFILE GRID */}
 
         <div className="grid grid-cols-1 lg:grid-cols-[320px_1fr] gap-5">
-          {/* =================================================
-              LEFT PROFILE CARD
-          ================================================= */}
+          {/* LEFT PROFILE CARD */}
 
           <aside className="space-y-5">
             <div className="rounded-3xl bg-white/[0.035] border border-white/[0.07] backdrop-blur-xl p-6">
@@ -753,9 +682,7 @@ const Profile = () => {
               </NavLink>
             </div>
 
-            {/* =================================================
-                PROFILE COMPLETION
-            ================================================= */}
+            {/* PROFILE COMPLETION */}
 
             <div className="rounded-3xl bg-white/[0.035] border border-white/[0.07] backdrop-blur-xl p-5">
               <div className="flex items-center justify-between">
@@ -796,9 +723,7 @@ const Profile = () => {
               </div>
             </div>
 
-            {/* =================================================
-                GITHUB CONNECT CARD
-            ================================================= */}
+            {/* GITHUB CONNECT CARD */}
 
             {!githubConnected && (
               <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-purple-500/[0.12] to-blue-500/[0.08] border border-purple-500/20 p-5">
@@ -839,9 +764,7 @@ const Profile = () => {
               </div>
             )}
 
-            {/* =================================================
-                CONNECTED GITHUB CARD
-            ================================================= */}
+            {/* CONNECTED GITHUB CARD */}
 
             {githubConnected && (
               <div className="rounded-3xl bg-white/[0.035] border border-white/[0.07] p-5">
@@ -876,14 +799,10 @@ const Profile = () => {
             )}
           </aside>
 
-          {/* =================================================
-              RIGHT CONTENT
-          ================================================= */}
+          {/* RIGHT CONTENT */}
 
           <section className="min-w-0">
-            {/* =================================================
-                TABS
-            ================================================= */}
+            {/* TABS */}
 
             <div className="rounded-2xl bg-white/[0.025] border border-white/[0.07] backdrop-blur-xl p-1.5 flex gap-1 overflow-x-auto">
               {tabs.map((tab) => {
